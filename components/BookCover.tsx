@@ -34,10 +34,8 @@ const BookCover = ({
       )}
       style={{ backgroundColor: coverColor }}
     >
-      {/* Placeholder for book side SVG */}
       BOOK SIDE SVG
 
-      {/* Book Cover Image */}
       <div
         className="absolute z-10"
         style={{
