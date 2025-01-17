@@ -225,3 +225,23 @@ export const navigationLinks = [
     },
   ];
   
+  export const borrowStatuses = [
+    {
+      value: "overdue",
+      label: "Overdue",
+      bgColor: "bg-[#FFF1F3]",
+      textColor: "text-[#C01048]",
+    },
+    {
+      value: "borrowed",
+      label: "Borrowed",
+      bgColor: "bg-[#F9F5FF]",
+      textColor: "text-[#6941C6]",
+    },
+    {
+      value: "returned",
+      label: "Returned",
+      bgColor: "bg-[#F0F9FF]",
+      textColor: "text-[#026AA2]",
+    },
+  ];
