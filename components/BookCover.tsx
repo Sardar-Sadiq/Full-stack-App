@@ -53,6 +53,7 @@ const BookCover = ({
         />
       </div>
     </div>
+    
   );
 };
 
