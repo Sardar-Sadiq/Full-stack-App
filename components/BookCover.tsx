@@ -1,6 +1,9 @@
+
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+
 
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 
@@ -30,11 +33,11 @@ const BookCover = ({
       className={cn(
         'relative transition-all duration-300',
         variantStyles[variant],
-        className
+        className,
       )}
-      style={{ backgroundColor: coverColor }}
+     
     >
-      BOOK SIDE SVG
+      
 
       <div
         className="absolute z-10"
