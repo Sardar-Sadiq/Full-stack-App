@@ -50,27 +50,6 @@ const BookOverview = ({
         </button>
     </div>
 
-    <div className='relative flex flex-1 justify-center'>
-      <div className='relative'>
-        <BookCover
-          variant="wide"
-          className="z-10"
-          coverColor={coverColor}
-          coverImage={coverImage}
-        />
-
-        <div className='absolute left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
-        <BookCover
-          variant="wide"
-          coverColor={coverColor}
-          coverImage={coverImage}
-        />
-
-        </div>
-
-      </div>
-
-    </div>
   </section>
   )
 }
