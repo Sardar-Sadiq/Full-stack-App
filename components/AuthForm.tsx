@@ -12,3 +12,5 @@ const AuthForm = ({type, scheme, defaultValues, onSubmit}: Props) => {
 }
 
 export default AuthForm
+
+//1:16:21
