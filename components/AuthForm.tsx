@@ -5,12 +5,10 @@ import React from 'react'
 
 const AuthForm = ({type, scheme, defaultValues, onSubmit}: Props) => {
   return (
-    <div>
-      
-    </div>
+    <div>AuthForm --{type}</div>
   )
 }
 
 export default AuthForm
 
-//1:16:21n
+//1:16:21
