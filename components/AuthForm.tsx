@@ -25,6 +25,7 @@ interface Props<T extends FieldValues> {
 
 // Correct syntax for generic React function component
 const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit }: Props<T>) => {
+  const isSignIn = type === "SIGN_IN";
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
@@ -35,7 +36,12 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
   };
 
   return (
-    <Form {...form}>
+    <div className="flex flex-col gap-4">
+      <h1 className="text-2xl font-semibold text-white">
+        {isSignIn ? 'Welcome back to BookSage' : 'Create your library account'}
+      </h1>
+      <p></p>
+      <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -56,6 +62,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
         <Button type="submit">Submit</Button>
       </form>
     </Form>
+    </div>
   );
 };
 
