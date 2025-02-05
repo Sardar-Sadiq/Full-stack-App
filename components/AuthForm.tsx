@@ -62,7 +62,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+      
       </form>
     </Form>
     <p></p>
