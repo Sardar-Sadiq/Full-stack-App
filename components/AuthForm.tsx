@@ -52,14 +52,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
           control={form.control}
           name={"username" as Path<T>} // ✅ Corrected TypeScript error
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>This is your public display name.</FormDescription>
-              <FormMessage />
-            </FormItem>
+          
           )}
         />
         <Button type="submit">Submit</Button>
