@@ -46,25 +46,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
         : "Please complete all fields and upload a valid university ID to gain access to the library"}
     </p>
 
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name={"username" as Path<T>} // ✅ Corrected TypeScript error
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>This is your public display name.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
+  
     <p></p>
   </div>
   );
