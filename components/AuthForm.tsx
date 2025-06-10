@@ -8,6 +8,7 @@ import {
   SubmitHandler,
   Path,
 } from "react-hook-form";
+
 import React from "react";
 import { z, ZodType } from "zod";
 
@@ -36,11 +37,13 @@ const AuthForm = <T extends FieldValues>({
   defaultValues,
   onSubmit,
 }: Props<T>) => {
+
+
   const isSignIn = type === "SIGN_IN";
 
-  const form: UseFormReturn<T> = useForm<T>({
+  const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
-    defaultValues,
+    defaultValues: defaultValues as DefaultValues<T>,
   });
 
   const handleSubmit: SubmitHandler<T> = async (data) => {
@@ -59,7 +62,7 @@ const AuthForm = <T extends FieldValues>({
       </p>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full space-y-8">
           <FormField
             control={form.control}
             name={"username" as Path<T>} // ✅ Corrected TypeScript error
