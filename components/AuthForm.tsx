@@ -8,7 +8,7 @@ import {
   SubmitHandler,
   Path,
 } from "react-hook-form";
-
+import Link from "next/link";
 import React from "react";
 import { z, ZodType } from "zod";
 
@@ -70,7 +70,7 @@ const AuthForm = <T extends FieldValues>({
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input placeholder="Sardar" {...field} />
                 </FormControl>
                 <FormDescription>
                   This is your public display name.
@@ -82,7 +82,11 @@ const AuthForm = <T extends FieldValues>({
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-      <p></p>
+      <p className="text-center text-base font-medium">
+        {isSignIn ? "Don't have an account?" : "Already have an account?"}
+            <Link href={isSignIn ? "/sign-up" : "/sign-in"} className="fonbold text-primary">
+            {isSignIn ? "Create an account" : "Sign in"}</Link>
+      </p>
     </div>
   );
 };
