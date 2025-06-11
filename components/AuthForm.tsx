@@ -23,6 +23,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { fields } from "@hookform/resolvers/ajv/src/__tests__/__fixtures__/data.js";
+import { FIELD_NAMES } from "./constants";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -62,14 +64,20 @@ const AuthForm = <T extends FieldValues>({
       </p>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full space-y-8">
-          <FormField
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full space-y-6">
+
+          {Object.keys(defaultValues).map((field) => (
+
+            <FormField
+            key={field}
             control={form.control}
-            name={"username" as Path<T>} // ✅ Corrected TypeScript error
+            name={field as Path<T>} // ✅ Corrected TypeScript error
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel className="capitalize">{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                 <FormControl>
+
+                  
                   <Input placeholder="Sardar" {...field} />
                 </FormControl>
                 <FormDescription>
@@ -79,6 +87,10 @@ const AuthForm = <T extends FieldValues>({
               </FormItem>
             )}
           />
+
+          ))}
+
+          
           <Button type="submit">Submit</Button>
         </form>
       </Form>
