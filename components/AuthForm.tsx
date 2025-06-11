@@ -23,8 +23,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { fields } from "@hookform/resolvers/ajv/src/__tests__/__fixtures__/data.js";
-import { FIELD_NAMES } from "./constants";
+
+import { FIELD_NAMES, FIELD_TYPES } from "./constants";
+import ImageUpload from "./ImageUpload";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -76,9 +77,13 @@ const AuthForm = <T extends FieldValues>({
               <FormItem>
                 <FormLabel className="capitalize">{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                 <FormControl>
+                  {field.name === "universityCard" ? (<ImageUpload/>): (
+                    <Input required type={ FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]} {...field} 
+                    className="form-input"
+                    />
+                  ) }
 
-                  
-                  <Input placeholder="Sardar" {...field} />
+                 
                 </FormControl>
                 <FormDescription>
                   This is your public display name.
@@ -91,7 +96,9 @@ const AuthForm = <T extends FieldValues>({
           ))}
 
           
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="form-btn">
+            {isSignIn ? "Sign In" : "Sign Up"}
+          </Button>
         </form>
       </Form>
       <p className="text-center text-base font-medium">
