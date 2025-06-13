@@ -11,8 +11,8 @@ const authenticator = async () => {
 
 
 
-  } catch(error: any){
-    throw new Error(message: `Authentication request failed: ${error.message }`);
+  } catch(error: any) {
+    throw new Error(message: `Authentication request failed: ${error.message}`);
   }
 }
 
@@ -28,4 +28,4 @@ const ImageUpload = () => {
 export default ImageUpload
 
 
-//1:43:50 
+//1:43:50 image kit see dekhna
