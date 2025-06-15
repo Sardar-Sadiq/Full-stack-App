@@ -1,13 +1,17 @@
 'use client'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { IKImage, ImageKitProvider, IKUpload } from 'imagekitio-next' 
 import ImageKit from 'imagekit';
 import config from '@/lib/config';
+import Image from 'next/image';
+
 const { 
     env: { 
-        imagekit: { publicKey, privateKey, urlEndpoint },
+        imagekit: { publicKey, urlEndpoint },
     },
 } = config;
+
+
 const authenticator = async () => {
   try {
     const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
@@ -33,9 +37,29 @@ const authenticator = async () => {
 
 
 const ImageUpload = () => {
-  return (
-    <ImageKitProvider publicKey={publicKey} urlEndpoint={urlEndpoint} authenticator={authenticator}>
+  const ikUploadRef = useRef(null);
+  const[file, setFile] = useState<{ filePath: string} | null>
+  (null);
 
+  const onError = () => {}
+  const onSuccess = () => {}
+
+  return (
+    <ImageKitProvider 
+    publicKey={publicKey} 
+    urlEndpoint={urlEndpoint} 
+    authenticator={authenticator}
+    >
+      <IKUpload
+        className='hidden' 
+        ref={ikUploadRef} 
+        onError={onError} 
+        onSuccess={onSuccess}
+        fileName='test-upload.png'
+      />
+    <button className='upload-btn'>
+      <Image src="/icons/upload.svg" alt="upload-icon" width={20} height={20} className="object-contain"/>
+    </button>
     </ImageKitProvider>
   )
 }
