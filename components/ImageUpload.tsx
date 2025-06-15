@@ -57,7 +57,7 @@ const ImageUpload = () => {
         onSuccess={onSuccess}
         fileName='test-upload.png'
       />
-    <button className='upload-btn'>
+    <button className='upload-btn bg-[#232839]'>
       <Image src="/icons/upload.svg" alt="upload-icon" width={20} height={20} className="object-contain"/>
     </button>
     </ImageKitProvider>
