@@ -1,15 +1,40 @@
-import { varchar, uuid, integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import {
+  varchar,
+  uuid,
+  integer,
+  pgEnum,
+  pgTable,
+  date,
+  serial,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
 
+export const STATUS_ENUM = pgEnum("status", [
+  "PENDING",
+  "APRROVED",
+  "REJECTED",
+]);
+export const ROLE_ENUM = pgEnum("role", ["USER", "ADMIN"]);
 
-export STATUS_ENUM = pgEnum('status', ['PENDING', 'APRROVED', 'REJECTED'])
+export const BORROW_STATUS_ENUM = pgEnum("borrow_status", [
+  "BORROWED",
+  "RETURNED",
+]);
 
+//this is structure which the user data will looks like
 
-export const users = pgTable('users', {
-  id: uuid('id').notNull().privateKey().defaultRandom().unique(),
-  fullName: varchar("full_name", {length: 255}).notNull(),
+export const users = pgTable("users", {
+  id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
+  fullName: varchar("full_name", { length: 255 }).notNull(),
   email: text("email").notNull().unique(),
   universityId: integer("university_id").notNull().unique(),
-  password: text('password').notNull(),
-  universityCard: text('unversity_card').notNull()
-, 
+  password: text("password").notNull(),
+  universityCard: text("unversity_card").notNull(),
+  status: STATUS_ENUM("status").default("PENDING"),
+  role: ROLE_ENUM("role").default("USER"),
+  lastActivityDate: date("last_activity_date").defaultNow(),
+  createdAt: timestamp("created_at", {
+    withTimezone: true,
+  }).defaultNow(),
 });
