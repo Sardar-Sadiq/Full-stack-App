@@ -12,4 +12,3 @@ export default defineConfig({
   },
 });
 
-//this is backend related work here
